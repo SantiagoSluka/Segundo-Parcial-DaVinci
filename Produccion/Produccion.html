@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produccion-Rocky IVt</title>
+    <link rel="stylesheet" href="Produccion.css">
+    <link rel="icon" type="image/x-icon" href="../favicon-rocky.ico" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Rubik+Mono+One&display=swap" rel="stylesheet">
+</head>
+<body>
+      <header>
+    <img src="../Img/rocky logo.avif" alt="Rocky img" class="logo">
+    <input type="checkbox" id="nav-toggle" class="nav-toggle">
+    <label for="nav-toggle" class="nav-toggle-label">☰</label>
+    <nav>
+            <a href="/index.html">Inicio</a>
+            <a href="/Reparto/Reparto.html">Reparto</a>
+            <a href="" class="activa">Produccion</a>
+            <a href="/Curiosidades/Curiosidades.html">Curiosidades</a>
+            <a href="/Contacto/Contacto.html">Contacto</a>
+    </nav>
+  </header>
+<main>
+  <section class="abajo">
+
+  <article id="card-container" class="card-container ">
+    <figure class="card">
+      <img src="../Img/Grand Teton National Park..jpg" alt="Locación 1" />
+      <div class="card-content">
+        <h2 class="card-title">Grand Teton National</h2>
+        <p class="card-text">Donde hace la escena de entrenamiento para pelear contra Drago.</p>
+      </div>
+    </figure>
+
+    <figure class="card">
+      <img src="../Img/PNE Agrodome.jpg" alt="Locación 2" />
+      <div class="card-content">
+        <h2 class="card-title">PNE Agrodome</h2>
+        <p class="card-text">El ring donde pelea con Drago.</p>
+      </div>
+    </figure>
+
+    <figure class="card">
+      <img src="../Img/casa de rocky.jpeg" alt="Locación 3" />
+      <div class="card-content">
+        <h2 class="card-title">Los Angeles</h2>
+        <p class="card-text">La casa de Rocky despues de Rocky II</p>
+      </div>
+    </figure>
+  </article>
+
+  <section id="Produccion" class="Produccion">
+    <h2>Produccion</h2>
+    <p><strong>Productora principal Chartoff-Winkler Productions</strong>: Esta fue la compañía productora habitual detrás de las películas de <strong>Rocky</strong>,
+      fundada por Robert Chartoff y Irwin Winkler. </p>
+      <p>
+       <strong>Distribuidora Metro-Goldwyn-Mayer (MGM)</strong> : MGM fue la encargada de la distribución de la película.
+       </p>
+  </section>
+</section>
+</main>
+<audio
+    id="bgAudio"
+    src="../Audio/John Cafferty - Hearts On Fire (Rocky IV) - Wardrip06.mp3"
+    autoplay
+    loop
+    muted
+    playsinline
+  ></audio>
+  <button id="audioToggle">Reproducir</button>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const audio = document.getElementById("bgAudio");
+      const btn   = document.getElementById("audioToggle");
+
+      const savedTime  = parseFloat(localStorage.getItem("audioTime") || 0);
+      const savedMuted = localStorage.getItem("audioMuted");
+      audio.currentTime = savedTime;
+      if (savedMuted !== null) audio.muted = savedMuted === "true";
+
+      btn.textContent = audio.muted ? "Reproducir" : "Silenciar";
+
+      audio.play().catch(() => {});
+
+      btn.addEventListener("click", () => {
+        audio.muted = !audio.muted;
+        btn.textContent = audio.muted ? "Reproducir" : "Silenciar";
+        localStorage.setItem("audioMuted", audio.muted);
+        
+        audio.play().catch(() => {});
+      });
+    });
+
+    window.addEventListener("beforeunload", () => {
+      const audio = document.getElementById("bgAudio");
+      localStorage.setItem("audioTime", audio.currentTime);
+   });
+</script>
+</body>
+</html>
+<footer>
+    <div id="Footer" class="footer">
+        <p>&copy; 2025 Rocky IV - Todos los derechos reservados - santiago.sluka@davinci.edu.ar</p>
+    </div>
+</footer>

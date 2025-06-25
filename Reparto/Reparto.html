@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reparto-Rocky IV</title>
+    <link rel="stylesheet" href="Reparto.css">
+    <link rel="icon" type="image/x-icon" href="../favicon-rocky.ico" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Rubik+Mono+One&display=swap" rel="stylesheet">
+</head>
+<body>
+      <header>
+    <img src="../Img/rocky logo.avif" alt="Rocky img" class="logo">
+    <input type="checkbox" id="nav-toggle" class="nav-toggle">
+    <label for="nav-toggle" class="nav-toggle-label">☰</label>
+    <nav>
+            <a href="/index.html">Inicio</a>
+            <a href="" class="activa">Reparto</a>
+            <a href="/Produccion/Produccion.html">Produccion</a>
+            <a href="/Curiosidades/Curiosidades.html">Curiosidades</a>
+            <a href="/Contacto/Contacto.html">Contacto</a>
+    </nav>
+  </header>
+
+
+<main>
+  <!-- 4 cards -->
+   <section class="abajo">
+  <article class="cards">
+   <figure class="card">
+      <img src="../Img/Sylvester Stallone update.webp" alt="">
+      <div class="text">
+         <h2>Sylvester Stallone</h2>
+         <p>Rocky Balboa: Actor, guionista y director de la película.
+        Interpreta al legendario boxeador que busca venganza y redención enfrentando al poderoso Drago. Emblema del espíritu de lucha y superación.</p>
+      </div>
+   </figure>
+   <figure class="card">
+      <img src="../Img/Drago update.jpg" alt="">
+      <div class="text">
+         <h2>Dolph Lundgren</h2>
+         <p>Iván Drago: Actor sueco que debutó en Hollywood con este papel.
+           Interpreta al frío y casi inhumano boxeador soviético, creado por la ciencia y símbolo del poder comunista.
+           Físicamente imponente y con pocas palabras.</p>
+      </div>
+   </figure>
+      <figure class="card">
+      <img src="../Img/Carl_Weathers update.webp" alt="">
+      <div class="text">
+         <h2>Carl Weathers</h2>
+         <p>Apollo Creed: Ex campeón del mundo y viejo rival convertido en amigo de Rocky.
+           Carismático y orgulloso, representa el estilo y la confianza estadounidense. Su trágica muerte impulsa la historia.</p>
+      </div>
+   </figure>
+      <figure class="card">
+      <img src="../Img/Talia Shire update.jpg" alt="">
+      <div class="text">
+         <h2>Talia Shire</h2>
+         <p>Adriana Pennino: Esposa de Rocky. Aunque aparece menos en esta entrega,
+           representa la voz de la razón y el corazón emocional de Rocky. Su apoyo es clave para su fortaleza mental.</p>
+      </div>
+   </figure>
+   </article>
+   <!-- 4 cards -->
+   <article class="cards">
+      <figure class="card">
+      <img src="../Img/Brigitte Nielsen update.webp" alt="">
+      <div class="text">
+         <h2>Brigitte Nielsen</h2>
+         <p>Ludmilla Vobet-Drago: Esposa de Ivan Drago en la película (y pareja real de Stallone en ese momento).
+           Elegante y fría, representa la imagen sofisticada y distante del bloque soviético.</p>
+      </div>
+   </figure>
+      <figure class="card">
+      <img src="../Img/Burt Young update.jpg" alt="">
+      <div class="text">
+         <h2>Burt Young</h2>
+         <p>Paulie Pennino: Cuñado de Rocky. Aporta humor y humanidad con su estilo rudo pero leal.
+           Es un apoyo constante para Rocky, aunque algo gruñón.</p>
+      </div>
+   </figure>
+      <figure class="card">
+      <img src="../Img/Tony Burton update.webp" alt="">
+      <div class="text">
+         <h2>Tony Burton</h2>
+         <p>Duke: es el entrenador y cornerman de Apollo Creed, y tras la muerte de Apollo,
+           se convierte en uno de los pilares del equipo de Rocky.</p>
+      </div>
+   </figure>
+      <figure class="card">
+      <img src="../Img/Michael_Buffer_Fight_For_Children_Washington_DC_Nov_2007.JPG" alt="">
+      <div class="text">
+         <h2>Michael Buffer</h2>
+         <p>El famoso presentador de boxeo que dice "Let's get ready to rumble!"
+           aparece en Rocky IV como el anunciador de la pelea.</p>
+      </div>
+   </figure>
+</article>
+</section>
+
+
+</main>
+<audio
+    id="bgAudio"
+    src="../Audio/John Cafferty - Hearts On Fire (Rocky IV) - Wardrip06.mp3"
+    autoplay
+    loop
+    muted
+    playsinline
+  ></audio>
+  <button id="audioToggle">Reproducir</button>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const audio = document.getElementById("bgAudio");
+      const btn   = document.getElementById("audioToggle");
+
+      const savedTime  = parseFloat(localStorage.getItem("audioTime") || 0);
+      const savedMuted = localStorage.getItem("audioMuted");
+      audio.currentTime = savedTime;
+      if (savedMuted !== null) audio.muted = savedMuted === "true";
+
+      btn.textContent = audio.muted ? "Reproducir" : "Silenciar";
+
+      audio.play().catch(() => {});
+
+      btn.addEventListener("click", () => {
+        audio.muted = !audio.muted;
+        btn.textContent = audio.muted ? "Reproducir" : "Silenciar";
+        localStorage.setItem("audioMuted", audio.muted);
+        
+        audio.play().catch(() => {});
+      });
+    });
+
+    window.addEventListener("beforeunload", () => {
+      const audio = document.getElementById("bgAudio");
+      localStorage.setItem("audioTime", audio.currentTime);
+   });
+</script>
+</body>
+</html>
+<footer>
+    <div id="Footer" class="footer">
+        <p>&copy; 2025 Rocky IV - Todos los derechos reservados - santiago.sluka@davinci.edu.ar</p>
+    </div>
+</footer>
